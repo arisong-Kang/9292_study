@@ -2,6 +2,12 @@ package Level_1.skkang
 
 //체육복
 object Solution_03 {
+  /*
+    n	lost	reserve	return
+    5	[2, 4]	[1, 3, 5]	5
+    5	[2, 4]	[3]	4
+    3	[3]	[1]	2
+   */
   def main(args: Array[String]): Unit = {
     val n = scala.io.StdIn.readLine()
 
