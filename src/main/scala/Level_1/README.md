@@ -5,7 +5,7 @@
 * 1주차
     * 모의고사(완전탐색)
         * MutableList
-        * new Array[Int]()
+        * new Array\[Int]\()
     * K번째 수(정렬)
         * string 타입의 숫자 값을 가져올 때: getNumericValue
     * 체육복(탐욕법)
