@@ -12,7 +12,7 @@ object Solution_01 {
     val inputArray = input.split(",")
 
     //가변길이 입력값때문에 arrayBuffer 선택
-//    var inputArrayBuffer = scala.collection.mutable.ArrayBuffer(inputArray: _*)
+    //var inputArrayBuffer = scala.collection.mutable.ArrayBuffer(inputArray: _*)
     val inputMutableArray = new Array[Int](inputArray.length)
     var i = 0
 
