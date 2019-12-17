@@ -86,6 +86,8 @@ project/plugins/project/
 .metadata
 bin/
 tmp/
+*.xml
+*.iml
 *.tmp
 *.bak
 *.swp
