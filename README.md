@@ -1,5 +1,7 @@
 ## 계획표
 
+* 프로그래머스
+    * https://programmers.co.kr/learn/challenges
 * 개발 환경
     * scala-sdk-2.12.6
 

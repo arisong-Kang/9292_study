@@ -12,8 +12,8 @@ object Solution_01 {
     val inputArray = input.split(",")
 
     //가변길이 입력값때문에 arrayBuffer 선택
-//    var inputArrayBuffer = scala.collection.mutable.ArrayBuffer(inputArray: _*)
-    var inputMutableArray = new Array[Int](inputArray.length)
+    //var inputArrayBuffer = scala.collection.mutable.ArrayBuffer(inputArray: _*)
+    val inputMutableArray = new Array[Int](inputArray.length)
     var i = 0
 
     inputArray.foreach{ x =>
@@ -50,7 +50,8 @@ object Solution_01 {
     scoreList.foreach( x => if (x == maxScore) {
       returnLength += 1
     })
-    var sortStudentList = new Array[Int](returnLength)
+
+    val sortStudentList = new Array[Int](returnLength)
 
     var j = 0
     for ( i <- 0 until scoreList.length) {
