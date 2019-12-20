@@ -64,36 +64,46 @@ object Solution_03 {
     lostArray.foreach{ x => println("lostArray:",x) }
     reserveArray.foreach{ x => println("reserveArray:",x)}
 
+    var tempArray_1 = new ArrayBuffer[Int]()
+    var tempArray_2 = new ArrayBuffer[Int]()
+
     reserveArray.foreach{ x =>
       println(">>>>>>>>>>>>>>>>>> x :",x)
-      var tempLostArray = lostArray
+
       if (x-1 > 0) {
         println("------------- [x-1] -------------", x-1)
-        tempLostArray.foreach{ y =>
+        lostArray.foreach{ y =>
           println(">>>>>>> y : ", y)
           if ((x-1) == y) {
             println("Do (-) !!")
-            tempLostArray -= x
+//            lostArray -= x
             lendCount += 1
+          } else {
+            tempArray_1 += y
           }
         }
       }
       if (x+1 <= n) {
         println("------------- [x+1] -------------", x+1)
-        tempLostArray.foreach{ y =>
+        tempArray_1.foreach{ y =>
           println(">>>>>>> y : ", y)
           if (x+1 == y) {
             println("Do (-) !!")
-            tempLostArray -= x
+//            lostArray -= x
             lendCount += 1
+          } else {
+            tempArray_2 += y
           }
         }
       }
     }
 
-    val result = n - lost.length + lendCount/2
+    tempArray_1.foreach{ x => println("tempArray_1:",x) }
+    tempArray_2.foreach{ x => println("tempArray_2:",x)}
 
-    println(n, lost.length, lendCount/2, overlapCount, result)
+    val result = n - lostArray.length + lendCount
+
+    println(" n="+n, " lostArray.length="+lostArray.length, " lendCount="+lendCount, " overlapCount="+overlapCount, " result="+result)
 
     return result
   }
