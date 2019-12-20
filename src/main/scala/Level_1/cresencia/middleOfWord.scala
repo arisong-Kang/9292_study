@@ -18,22 +18,8 @@ object middleOfWord {
 
     // 짝수인 경우
     if (s.length%2 == 0) {
-      // 6인 경우 3,4
-      println(s.length/2-1)
-      middleOfWord = s.substring(s.length/2-1, s.length/2+1)
-    } // 홀수인 경우    var middleOfWord = ""
-
-    // 짝수인 경우
-    if (s.length%2 == 0) {
-      // 6인 경우 3,4
-      println(s.length/2-1)
       middleOfWord = s.substring(s.length/2-1, s.length/2+1)
     } // 홀수인 경우
-    else {
-      middleOfWord = s.substring(s.length/2,s.length/2+1)
-    }
-
-    return middleOfWord
     else {
       middleOfWord = s.substring(s.length/2,s.length/2+1)
     }
