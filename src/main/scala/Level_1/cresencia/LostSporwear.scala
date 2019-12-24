@@ -1,9 +1,7 @@
 package Level_1.cresencia
 
-import scala.collection.immutable.HashMap
-import scala.collection.mutable
 import scala.collection.mutable.ArrayBuffer
-import scala.util.control.Breaks._
+
 /**
   * 점심시간에 도둑이 들어, 일부 학생이 체육복을 도난당했습니다. 다행히 여벌 체육복이 있는 학생이 이들에게 체육복을 빌려주려 합니다.
 *학생들의 번호는 체격 순으로 매겨져 있어, 바로 앞번호의 학생이나 바로 뒷번호의 학생에게만 체육복을 빌려줄 수 있습니다.
@@ -41,70 +39,41 @@ object LostSporwear {
 
   def main(args:Array[String]):Unit = {
 
-    val list:Vector[Int] = Vector(2,4)
-    val reserve:Vector[Int] = Vector(3)
+    val list:Vector[Int] = Vector(3)
+    val reserve:Vector[Int] = Vector(1)
     val n = 5
 
-    solution(n, list, reserve)
+    println(solution(n, list, reserve))
   }
 
   def solution(n: Int, lost: Vector[Int], reserve: Vector[Int]): Int = {
 
     var totalStudent = n - lost.length
-    var reservedSportWear = ""
+    var reservedArray = new ArrayBuffer[Int]()
+    var lostedArray = new ArrayBuffer[Int]()
+
+    // 잃어버린 학생, 여벌있는 학생 arraybuffer에 담기
+    reserve.foreach( student => reservedArray += student)
+    lost.foreach( student => lostedArray += student)
+
+    reserve.foreach( reserveStdt =>
+       lost.foreach(lostStdt =>
+         if(reserveStdt == lostStdt) {
+            reservedArray -= reserveStdt
+         }
+       )
+    )
 
     // lost인 idx가 reserve에 idx의 앞뒤에 있는지 확인
-    for (idx <- 0 until lost.length) {
-      var lostStdt = lost(idx)
-      println(reservedSportWear)
-
-      breakable {
-        for (reserveIdx <- 0 until reserve.length) {
-          if ((lostStdt + 1 == reserve(reserveIdx) && !reservedSportWear.contains(reserve(reserveIdx))) ||
-            (lostStdt - 1 == reserve(reserveIdx) && !reservedSportWear.contains(reserve(reserveIdx)))) {
+    lostedArray.foreach(lostedStudt =>
+       reservedArray.foreach(reservedStdt =>
+          if( (lostedStudt-1 == reservedStdt) || (lostedStudt+1 == reservedStdt)) {
             totalStudent += 1
-
-            if (reservedSportWear.length > 0) reservedSportWear += ","
-            reservedSportWear += reserve(reserveIdx)
-
-            break
+            reservedArray -= reservedStdt
           }
-
-          println(s"reservIdx: $reserveIdx")
-        }
-      }
-    }
-
-    println(s"total: $totalStudent")
+       )
+    )
 
     return totalStudent
-
-//    var totalStudent = n - lost.length
-//    var reservedMap = mutable.Map[Int, String]
-//
-//    for (idx <- 1 to reserve.length) {
-//      reservedMap += (reserve(idx) ->  "N")
-//    }
-//
-//    // lost인 idx가 reserve에 idx의 앞뒤에 있는지 확인
-//    for (idx <- 0 until lost.length) {
-//      var lostStdt = lost(idx)
-//
-//      breakable {
-//        for (reserveIdx <- 0 until reserve.length) {
-//          if ( lostStdt + 1 == reserve(reserveIdx) ||lostStdt - 1 == reserve(reserveIdx) ) {
-//            totalStudent += 1
-//
-//            break
-//          }
-//
-//          println(s"reservIdx: $reserveIdx")
-//        }
-//      }
-//    }
-//
-//    println(s"total: $totalStudent")
-//
-//    return totalStudent
   }
 }

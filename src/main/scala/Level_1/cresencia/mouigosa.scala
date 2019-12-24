@@ -71,6 +71,8 @@ object mouigosa {
       personArray += person
     }
 
+    // max랑 비교
+
     // 동점일 경우 오름차순으로
     return personArray.toVector
   }
