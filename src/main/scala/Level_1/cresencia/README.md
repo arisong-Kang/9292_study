@@ -43,9 +43,13 @@
 * (순번, 알파벳)을 가진 map 선언
 * 순번에 따라 해당 알파벳이 몇번째인지 따져보기
 
-### 9. 문자열 내림차순으로 배치하기
+### 9. 문자열 내림차순으로 배치하기(sortStringDescending)
 
 ### 10. 문자열 다루기 기본(manageString)
+* 별다른 알고리즘 없음
+* scala도 try catch 구문 사용 가능
+* string을 int로 변환할 수 있는지 확인하려면 Some(s.toInt)
+* 좀더 세련된 방법 => scala.util.Try(s.toInt).toOption != None
 
 
 ### 11. 서울에서 김서방 찾기(findKimInSeoul)
