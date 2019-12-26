@@ -4,5 +4,5 @@ def solution(seoul):
         if seoul[i] == "Kim":
             index = i
     
-    answer = '김서방은 %d에 있다' % i
+    answer = '김서방은 %d에 있다' % index
     return answer
