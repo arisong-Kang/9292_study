@@ -20,6 +20,12 @@ object manageString {
   }
 
   def solution(s: String): Boolean = {
+    /*
+    정말 컴팩트하게 푼 케이스
+    (s.length == 4 || s.length == 6) && scala.util.Try(s.toInt).toOption != None
+
+    try, catch문을 사용하지 않고 형변환되는지 여부 확인
+     */
     try {
       if ((s.length == 4 || s.length == 6) ) {
         Some(s.toInt)
