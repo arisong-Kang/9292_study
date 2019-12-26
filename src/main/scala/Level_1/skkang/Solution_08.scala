@@ -18,7 +18,7 @@ object Solution_08 {
     val inputNumber = scala.io.StdIn.readLine()
     val n = inputNumber.toInt
 
-    solution(inputMutableArray.toVector, n)
+    solution2(inputMutableArray.toVector, n)
 
   }
 
@@ -35,5 +35,9 @@ object Solution_08 {
     }
 
     return result
+  }
+
+  def solution2(strings: Vector[String], n: Int): Vector[String] = {
+    return strings.sortBy(i => (i(n),i))
   }
 }
