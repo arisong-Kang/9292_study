@@ -12,7 +12,7 @@ package Level_1.cresencia
 *2016년 a월 b일은 실제로 있는 날입니다. (13월 26일이나 2월 45일같은 날짜는 주어지지 않습니다)
 *입출력 예
   */
-object quiz_2016 {
+object Quiz_2016 {
 
   def main(args: Array[String]): Unit = {
 

@@ -22,7 +22,7 @@ sun, bed, car의 1번째 인덱스 값은 각각 u, e, a 입니다. 이를 기�
 입출력 예 2
 abce와 abcd, cdx의 2번째 인덱스 값은 c, c, x입니다. 따라서 정렬 후에는 cdx가 가장 뒤에 위치합니다. abce와 abcd는 사전순으로 정렬하면 abcd가 우선하므로, 답은 [abcd, abce, cdx] 입니다.
   */
-object sortStringWithCondition {
+object SortStringWithCondition {
 
   def main(args: Array[String]): Unit = {
 
@@ -33,47 +33,33 @@ object sortStringWithCondition {
   }
 
   def solution(strings: Vector[String], n: Int): Vector[String] = {
-    val dictionary:Map[String, Int] = Map(("a",1), ("b",2), ("c",3), ("d",4), ("e",5), ("f",6), ("g",7), ("h",8), ("i",9), ("j",10), ("k",11), ("l",12), ("m",13), ("n",14), ("o",15),
-      ("p",16), ("q",17), ("r",18), ("s",19), ("t",20), ("u",21), ("v",22), ("w",23), ("x",24), ("y",25), ("z",26))
-    var nth_string = mutable.ListBuffer[(Int, String)]()
-    var result = mutable.ArrayBuffer[String]()
+    var kth_string = mutable.ListBuffer[(Int, String)]()
+    val result = mutable.ArrayBuffer[String]()
 
     strings.foreach(word => {
-      nth_string += ((dictionary.get(word.charAt(n).toString).getOrElse().toString.toInt,word))
+      kth_string += ((word.charAt(n).toInt, word))
     })
 
-    // (순서, 알파벳) 에서 순서 오름차순으로 정렬
-    val sorted_string = nth_string.sortWith(_._1 < _._1)
+    kth_string = kth_string.sortWith(_._1 < _._1)
 
-    // 중복된 순서가 존재하는 경우, 사전 순으로 재정렬
-    for(idx <- 0 until sorted_string.length-1) {
+    for(idx <- 0 until kth_string.length) {
+      if( (kth_string.length > idx + 1) && (kth_string(idx)._1 == kth_string(idx+1)._1) ) {
+        var wordIdx = 0
 
-      // 중복된 순서인 경우
-      if(sorted_string(idx)._1 == sorted_string(idx+1)._1) {
-
-        // 문자열 char 수만큼 반복
-        for(wordIdx <- 0 until sorted_string(idx)._2.length) {
-          // 중복된 순서에 해당하는 문자열들의 알파벳 순서 뽑기
-          val front_char = dictionary.get(sorted_string(idx)._2.charAt(wordIdx).toString).getOrElse().toString.toInt
-          val second_char = dictionary.get(sorted_string(idx+1)._2.charAt(wordIdx).toString).getOrElse().toString.toInt
-
-          // 알파벳 순서간 차이가 있는 경우 배열에 넣어주기
-          if(front_char < second_char && result.length < idx+2) {
-            result += sorted_string(idx)._2
-            result += sorted_string(idx+1)._2
-          }else if(front_char > second_char && result.length < idx+2) {
-            result += sorted_string(idx+1)._2
-            result += sorted_string(idx)._2
+        kth_string(idx)._2.toString.foreach(char => {
+          if ((char.toInt < kth_string(idx+1)._2.charAt(wordIdx) && result.length != idx+1 )) {
+            result += kth_string(idx)._2
+            result += kth_string(idx+1)._2
+            println("yeah")
+          } else if ((char.toInt > kth_string(idx+1)._2.charAt(wordIdx) && result.length != idx+1 )) {
+            result += kth_string(idx+1)._2
+            result += kth_string(idx)._2
           }
-        }
-      }
-      // 중복되지 않은 순서인 경우 그냥 추가
-      else if( !result.contains(sorted_string(idx)._2)  ){
-        result += sorted_string(idx)._2
-      }
-    }
+            wordIdx += 1
+        })
+      } else if(result.length < idx+1) result += kth_string(idx)._2
 
-    result += sorted_string(sorted_string.length-1)._2
+    }
 
     return result.toVector
   }

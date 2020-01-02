@@ -33,7 +33,7 @@ answers	return
 모든 사람이 2문제씩을 맞췄습니다.
 
   */
-object mouigosa {
+object Mouigosa {
 
   def main(args: Array[String]): Unit = {
 
@@ -88,7 +88,7 @@ object mouigosa {
       d.update(k, d(k) :+ (i+1))
     }
     println(d.keysIterator.max)
-s`                                                                                                                                                                                          `
+
     return d(d.keysIterator.max)
   }
 

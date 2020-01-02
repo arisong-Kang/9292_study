@@ -17,7 +17,7 @@ a	b	return
 3	3	3
 5	3	12
   */
-object sumOfNum {
+object SumOfNum {
   def main(args: Array[String]): Unit = {
     val a = -3
     val b = -5

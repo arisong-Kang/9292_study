@@ -12,7 +12,7 @@ str은 길이 1 이상인 문자열입니다.
 s	return
 Zbcdefg	gfedcbZ
   */
-object sortStringDescending {
+object SortStringDescending {
 
   def main(args:Array[String]):Unit = {
     val s = "Zbcdefg"
