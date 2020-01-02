@@ -37,9 +37,10 @@ object mouigosa {
 
   def main(args: Array[String]): Unit = {
 
-    val test:Vector[Int] = Vector(4,4,4)
+    val test:Vector[Int] = Vector(1,3,2,4,2)
 
-    println(solution(test))
+//    println(solution(test))
+    println(solution2(test))
   }
 
   def solution(answers: Vector[Int]): Vector[Int] = {
@@ -75,6 +76,20 @@ object mouigosa {
 
     // 동점일 경우 오름차순으로
     return personArray.toVector
+  }
+
+  def get_right_cnt(answers:Vector[Int], pattern:Vector[Int]):Int = (for((a, i)<-answers.view.zipWithIndex if a == pattern(i % pattern.size)) yield 1).sum
+  def solution2(answers: Vector[Int]): Vector[Int] = {
+    val patterns = Seq(Vector(1, 2, 3, 4, 5),Vector(2, 1, 2, 3, 2, 4, 2, 5),Vector(3, 3, 1, 1, 2, 2, 4, 4, 5, 5))
+    var d = scala.collection.mutable.Map[Int, Vector[Int]]()
+    for((p,i)<-patterns.view.zipWithIndex) {
+      val k = get_right_cnt(answers, p)
+      d.update(k, d.getOrElse(k, Vector[Int]()))
+      d.update(k, d(k) :+ (i+1))
+    }
+    println(d.keysIterator.max)
+s`                                                                                                                                                                                          `
+    return d(d.keysIterator.max)
   }
 
 }
