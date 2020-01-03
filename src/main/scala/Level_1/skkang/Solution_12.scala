@@ -17,7 +17,7 @@ object Solution_12 {
   def main(args: Array[String]): Unit = {
     val inputString = scala.io.StdIn.readLine()
 
-    solution(inputString.toInt)
+    solution2(inputString.toInt)
 
   }
   def solution(n: Int): String = {
@@ -32,5 +32,11 @@ object Solution_12 {
     }
 
     return result.mkString("")
+  }
+  def solution2(n:Int): String = {
+
+    var result = "수박" * (n/2)
+
+    return if (n%2 == 0) result else result+"수"
   }
 }
