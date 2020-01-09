@@ -46,8 +46,14 @@
         * .zipWithIndex
         * .toUpper, .toLower
     * 자릿수 더하기(연습문제)
+        * map
+        * reduce(_+_) : default는 reduceLeft, 왼쪽 _ 누적값, 오른쪽 _ 각 요소
     * 자연수 뒤집어 배열로 만들기(연습문제)
     * 정수 내림차순으로 배치하기(연습문제)
     * 정수 제곱근 판별(연습문제)
+        * scala.math.sqrt: 제곱근 반환
+        * scala.math.pow(x, y): x^y
+        * .isValidInt: 정수판단
     * 제일 작은 수 제거하기(연습문제)
+        * .diff
     * 짝수와 홀수(연습문제)
