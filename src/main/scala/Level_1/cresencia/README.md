@@ -56,10 +56,10 @@
 * string을 int로 변환할 수 있는지 확인하려면 Some(s.toInt)
 * 좀더 세련된 방법 => scala.util.Try(s.toInt).toOption != None
 
-
 ### 11. 서울에서 김서방 찾기(FindKimInSeoul)
 * contains를 사용
 ChangeStringToNum
+
 ### 12. 수박수박수박수박(Subak)
 * 정수가 짝수인 경우 n/2만큼 반복해서 word 만들기
 * return할때 홀수면 "수" 붙임
@@ -78,20 +78,28 @@ ChangeStringToNum
 ## 15. 약수의 합(SumOfFactor)
 * 약수를 구하기 위해 %로 나머지 연산을 하고 0인 경우 추가하는 방식
 
-## 16. 이상한 문자 만들기()
+## 16. 이상한 문자 만들기(MakeOddString)
+* string을 ""로 split해서 반복
+* cnt 변수를 이용해서 짝수n%2인 경우 UPppercase
+* 문제를 자세히 읽어봐야한다는 교훈. 그냥 word기준이 아니라 공백을 기점으로 자릿수가 초기화되는 방식
 
-## 17. 자릿수 더하기(연습문제)
+## 17. 자릿수 더하기(SumOfWholeNum)
+* n을 string으로 전환한 뒤 foreach
+* string을 toInt하면 이상해지니 num.getNumericValue 사용
 
-## 18. 자연수 뒤집어 배열로 만들기(연습문제)
+## 18. 자연수 뒤집어 배열로 만들기(ReverseNumToArray)
+* 컴팩트한 방법 n.toString.split("").map(_.toInt).reverse.toVector
+* 문자열 자체를 ""로 split하고 map하면 되는것이다.
 
-## 19. 정수 내림차순으로 배치하기(연습문제)
+## 19. 정수 내림차순으로 배치하기(OrderNumDescending)
+* 정수 => string 변환 / split해서 배열로 전환
+* 배열을 sortWith로 (_ > _) 내림차순 비교 후 toLong
 
 ## 20. 정수 제곱근 판별(NumSquare)
 * 제곱근이 된 수 구하기 Math.sqrt(n)
 * 제곱근구하기 Math.pow(n,제곱근할 횟수)
 
-
-## 21. 제일 작은 수 제거하기(연습문제)
+## 21. 제일 작은 수 제거하기(removeLowestNum)
 
 ## 22. 짝수와 홀수(EvenAndOdd)
 * n을 2로 % 나머지연산

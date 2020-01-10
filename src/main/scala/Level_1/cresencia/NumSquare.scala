@@ -27,12 +27,9 @@ object NumSquare {
   }
 
   def solution(n: Long): Long = {
-    val square = Math.sqrt(n).toInt
-    val predict = Math.pow(square,2).toInt
+    val square = Math.sqrt(n)
 
-    println(square)
-
-    return if((n == predict && square > 1) || n==1)  Math.pow(square+1,2).toLong
+    return if(square.isValidInt) Math.pow(square+1,2).toLong
     else -1
   }
 }
