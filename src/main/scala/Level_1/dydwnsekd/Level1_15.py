@@ -1,3 +1,5 @@
+#약수의 합
+
 def solution(n):
     answer = 0
     
