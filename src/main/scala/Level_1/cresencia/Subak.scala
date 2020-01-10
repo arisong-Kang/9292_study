@@ -18,6 +18,7 @@ object Subak {
     val s:Int = 10000
 
     println(solution(s))
+    println(solution2(s))
   }
 
   def solution(n: Int): String = {
@@ -31,4 +32,7 @@ object Subak {
     return if(n%2==0) result else result.concat("수")
   }
 
+  def solution2(n:Int): String = {
+    return if(n%2==0) "수박"*(n/2) else "수박"*(n/2)+"수"
+  }
 }

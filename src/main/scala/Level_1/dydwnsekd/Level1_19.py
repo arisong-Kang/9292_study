@@ -1,12 +1,14 @@
-import math
+#정수 내림차순으로 배치하기
 
 def solution(n):
-    answer = 0
+    n = str(n)
+    answer = ''
+    num_list = []
+    for i in n:
+        num_list.append(i)
     
-    sqrt_n = math.sqrt(n)
-    if int(sqrt_n) == sqrt_n:
-        answer = (int(sqrt_n)+1) ** 2
-    else:
-        answer = -1
-        
-    return answer
+    num_list.sort(reverse=True)
+    
+    for i in num_list:
+        answer += i
+    return int(answer)

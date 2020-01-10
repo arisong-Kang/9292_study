@@ -22,6 +22,10 @@ object ChangeStringToNum {
   }
 
   def solution(s: String): Int = {
+    if(s.forall(_.isDigit)){
+      println(s.toInt)
+    }
+
     return s.toInt
   }
 }
