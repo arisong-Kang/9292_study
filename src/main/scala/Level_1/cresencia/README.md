@@ -74,6 +74,7 @@ ChangeStringToNum
 * s.foreach(s => {s.toInt}) 를 이용하여 해결
 * 공백이 들어오는 경우 z나 Z인 경우 예외처리
 * n이 25인 경우 B 이상부터 Z 이후 A부터 시작해야하니 예외처리
+* 시저 암호에서 26으로 나머지연산 해주어야함
 
 ## 15. 약수의 합(SumOfFactor)
 * 약수를 구하기 위해 %로 나머지 연산을 하고 0인 경우 추가하는 방식
@@ -100,6 +101,24 @@ ChangeStringToNum
 * 제곱근구하기 Math.pow(n,제곱근할 횟수)
 
 ## 21. 제일 작은 수 제거하기(removeLowestNum)
+* 가장 작은 수를 lowest에 저장
+* mutableArr를 만들어서 그 요소만 제거하기
 
 ## 22. 짝수와 홀수(EvenAndOdd)
 * n을 2로 % 나머지연산
+
+## 23. 최대공약수와 최소공배수(TheGreatestCommonFactorAndTheLeastCommonMultiple)
+* 최대공약수: 일단 다 넣어보고 계산
+* 최소공배수 = m * n / 최대공약수 (요 식 외우기 )
+*  import scala.math.BigInt 이 라이브러리를 사용하면 최대공약수
+* 최대공약수 a.gcd(b).toInt / 최대공배수 = m * n / a.gcd(b).toInt
+
+## 24. 콜라츠 추측(CollatzConjecture)
+평균 구하기(연습문제)
+하샤드 수(연습문제)
+핸드폰 번호 가리기(연습문제)
+행렬의 덧셈(연습문제)
+x만큼 간격이 있는 n개의 숫자(연습문제)
+직사각형 별찍기(연습문제)
+
+소수 에라토스테네스의 채 (소수 알고리즘)

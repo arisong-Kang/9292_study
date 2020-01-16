@@ -16,7 +16,7 @@ arr	return
 [4,3,2,1]	[4,3,2]
 [10]	[-1]
   */
-object removeLowestNum {
+object RemoveLowestNum {
   def main(args: Array[String]): Unit = {
 
     val arr = Vector(10)
