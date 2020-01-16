@@ -28,7 +28,7 @@ package Level_1.cresencia
  *입출력 예 #3
 *626331은 500번을 시도해도 1이 되지 못하므로 -1을 리턴해야합니다.
   */
-object CollatzConjecture {
+object CollatzConjecture_24 {
   def main(args: Array[String]): Unit = {
 
     val n = 626331
@@ -45,7 +45,7 @@ object CollatzConjecture {
         collatz = collatz / 2
       }
       else if (cnt > 500) {
-        return -1
+        collatz = 1
       }
       else {
         collatz = collatz * 3 + 1
@@ -54,6 +54,6 @@ object CollatzConjecture {
       cnt += 1
     }
 
-    return cnt
+    return if(cnt > 0) cnt else -1
   }
 }

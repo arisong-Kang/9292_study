@@ -100,25 +100,39 @@ ChangeStringToNum
 * 제곱근이 된 수 구하기 Math.sqrt(n)
 * 제곱근구하기 Math.pow(n,제곱근할 횟수)
 
-## 21. 제일 작은 수 제거하기(removeLowestNum)
+## 21. 제일 작은 수 제거하기(removeLowestNum_21)
 * 가장 작은 수를 lowest에 저장
 * mutableArr를 만들어서 그 요소만 제거하기
 
-## 22. 짝수와 홀수(EvenAndOdd)
+## 22. 짝수와 홀수(EvenAndOdd_22)
 * n을 2로 % 나머지연산
 
-## 23. 최대공약수와 최소공배수(TheGreatestCommonFactorAndTheLeastCommonMultiple)
+## 23. 최대공약수와 최소공배수(TheGreatestCommonFactorAndTheLeastCommonMultiple_23)
 * 최대공약수: 일단 다 넣어보고 계산
 * 최소공배수 = m * n / 최대공약수 (요 식 외우기 )
 *  import scala.math.BigInt 이 라이브러리를 사용하면 최대공약수
 * 최대공약수 a.gcd(b).toInt / 최대공배수 = m * n / a.gcd(b).toInt
 
-## 24. 콜라츠 추측(CollatzConjecture)
-평균 구하기(연습문제)
-하샤드 수(연습문제)
-핸드폰 번호 가리기(연습문제)
-행렬의 덧셈(연습문제)
-x만큼 간격이 있는 n개의 숫자(연습문제)
-직사각형 별찍기(연습문제)
+## 24. 콜라츠 추측(CollatzConjecture_24)
+* 짝수, 홀수인 경우에 대한 케이스 처리
+* 500이 넘어갈 경우 예외처리
+
+## 25. 평균 구하기(GetAverage_25)
+* foldLeft(시작수){안에 넣을 계산식} 활용
+
+## 26. 하샤드 수(Harshad_26)
+* isValidInt와 foldLeft를 사용하여 해결
+
+## 27. 핸드폰 번호 가리기(BlindPhoneNum_27)
+* 뒷자리 4개를 제외하고 length-4만큼 * 추가
+
+## 28. 행렬의 덧셈(SumOfMatirx_28)
+* 행과 열을 이중for문으로 연산
+* 각각의 행을 더한 vector를 추가
+
+## 29. x만큼 간격이 있는 n개의 숫자(NumPerX_29)
+* Long으로 변환한 숫자를 추가해주기
+
+## 30. 직사각형 별찍기(연습문제)
 
 소수 에라토스테네스의 채 (소수 알고리즘)

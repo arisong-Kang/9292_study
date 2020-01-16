@@ -12,7 +12,7 @@ num	return
 3	Odd
 4	Even
   */
-object EvenAndOdd {
+object EvenAndOdd_22 {
 
   def main(args: Array[String]): Unit = {
 
