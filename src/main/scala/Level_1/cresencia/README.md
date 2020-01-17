@@ -133,6 +133,7 @@ ChangeStringToNum
 ## 29. x만큼 간격이 있는 n개의 숫자(NumPerX_29)
 * Long으로 변환한 숫자를 추가해주기
 
-## 30. 직사각형 별찍기(연습문제)
+## 30. 직사각형 별찍기(MakeRectangleWithStar_30)
+* 그냥 별찍기
 
 소수 에라토스테네스의 채 (소수 알고리즘)
