@@ -11,7 +11,7 @@ n은 10,000,000,000이하인 자연수입니다.
 입출력 예
 n	return
 12345	[5,4,3,2,1]  */
-object ReverseNumToArray {
+object ReverseNumToArray_18 {
   def main(args: Array[String]): Unit = {
 
     val n = 123

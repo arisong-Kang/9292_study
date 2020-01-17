@@ -18,7 +18,7 @@ N	answer
 입출력 예 #2
 9 + 8 + 7 = 24이므로 24를 return 하면 됩니다.
   */
-object SumOfWholeNum {
+object SumOfWholeNum_17 {
   def main(args: Array[String]): Unit = {
 
     val n = 123

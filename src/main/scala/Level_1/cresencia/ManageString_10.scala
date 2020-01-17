@@ -11,7 +11,7 @@ s	return
 a234	false
 1234	true
   */
-object ManageString {
+object ManageString_10 {
   def main(args: Array[String]): Unit = {
 
     val s:String = "1234"

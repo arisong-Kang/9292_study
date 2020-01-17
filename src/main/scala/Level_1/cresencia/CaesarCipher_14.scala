@@ -19,7 +19,7 @@ AB	1	BC
 z	1	a
 a B z	4	e F d
   */
-object CaesarCipher {
+object CaesarCipher_14 {
   def main(args: Array[String]): Unit = {
 
     val s = "ZA"

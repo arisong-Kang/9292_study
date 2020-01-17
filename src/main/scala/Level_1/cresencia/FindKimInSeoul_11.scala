@@ -12,7 +12,7 @@ package Level_1.cresencia
   *seoul	return
   *[Jane, Kim]	김서방은 1에 있다
   */
-object FindKimInSeoul {
+object FindKimInSeoul_11 {
   def main(args: Array[String]): Unit = {
 
     val seoul:Vector[String] = Vector("Jane","aKim")

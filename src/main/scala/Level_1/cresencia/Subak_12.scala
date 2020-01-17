@@ -11,7 +11,7 @@ n	return
 3	수박수
 4	수박수박
   */
-object Subak {
+object Subak_12 {
 
   def main(args: Array[String]): Unit = {
 

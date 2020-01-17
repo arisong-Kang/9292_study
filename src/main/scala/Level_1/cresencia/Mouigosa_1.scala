@@ -33,7 +33,7 @@ answers	return
 모든 사람이 2문제씩을 맞췄습니다.
 
   */
-object Mouigosa {
+object Mouigosa_1 {
 
   def main(args: Array[String]): Unit = {
 

@@ -13,7 +13,7 @@ s는 0으로 시작하지 않습니다.
 예를들어 str이 1234이면 1234를 반환하고, -1234이면 -1234를 반환하면 됩니다.
 str은 부호(+,-)와 숫자로만 구성되어 있고, 잘못된 값이 입력되는 경우는 없습니다.
   */
-object ChangeStringToNum {
+object ChangeStringToNum_13 {
   def main(args: Array[String]): Unit = {
 
     val s = "+1234"

@@ -10,7 +10,7 @@ n은 1이상 8000000000 이하인 자연수입니다.
 n	return
 118372	873211
   */
-object OrderNumDescending {
+object OrderNumDescending_19 {
   def main(args: Array[String]): Unit = {
 
     val n = 118372
