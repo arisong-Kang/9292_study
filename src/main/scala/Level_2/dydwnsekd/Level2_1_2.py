@@ -30,18 +30,17 @@
 def solution(priorities, location):
     answer = 1
     
-    while len(priorities) != 0:
-        print ("location = ",location , "answer = ", answer)
-        if location == priorities.index(max(priorities)):
-            return answer
-        else:
-            priorities.pop(priorities.index(max(priorities)))
-            priorities.append(priorities.pop(0))
-            
-            if location != 0:
-                location -= 1
+    while True:
+        if priorities[0] == max(priorities):
+            if location == 0:
+                return answer
             else:
+                location -= 1
+                answer += 1
+                priorities.pop(0)
+        else:
+            priorities.append(priorities.pop(0))
+            if location == 0:
                 location = len(priorities)-1
-            answer += 1
-            
-    return answer
+            else:
+                location -= 1
