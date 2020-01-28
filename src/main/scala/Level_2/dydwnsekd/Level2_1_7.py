@@ -14,11 +14,20 @@
 # numbers	return
 # [6, 10, 2]	6210
 # [3, 30, 34, 5, 9]	9534330
+from operator import itemgetter
 
 def solution(numbers):
     answer = ''
-    # n번째 문자열을 기준으로 정렬하는 방법
-    # 숫자에서는 잘 안되는것 같음 확인 필요
-    # sorted(a, key=itemgetter(0))
+    temp_numbers = []
+    
+    for i in numbers:
+        temp_numbers.append(str(i))
+        
+    sort_numbers = sorted(temp_numbers, key=lambda x : (x[0:len(x)],x), reverse=True)
+
+    print (sort_numbers)
+    
+    for i in sort_numbers:
+        answer += i
     
     return answer
