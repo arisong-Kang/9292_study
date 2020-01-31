@@ -35,6 +35,9 @@ def solution(numbers):
     # numbers의 조합을 보관할 list
     num_list = []
     
+    # 소수 판별할 flag
+    flag = None
+    
     for i in numbers:
         num_split.append(i)
         
@@ -44,6 +47,15 @@ def solution(numbers):
         for j in temp_list:
             num_list.append(int("".join(j)))
     
-    print (num_list)
-
+    num_list = list(set(num_list))
+    
+    for i in num_list:
+        if i > 2:
+            flag = True
+            for j in range(2, i):
+                if i % j == 0:
+                    flag = False
+                    break
+        if flag:
+            answer += 1
     return answer
