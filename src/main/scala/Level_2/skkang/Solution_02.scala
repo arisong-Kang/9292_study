@@ -1,5 +1,8 @@
 package Level_2.skkang
 
+import scala.collection.mutable
+import scala.collection.mutable.ArrayBuffer
+
 /**
   * 프린터
   * https://programmers.co.kr/learn/courses/30/lessons/42587
@@ -22,16 +25,86 @@ package Level_2.skkang
   * location은 0 이상 (현재 대기목록에 있는 작업 수 - 1) 이하의 값을 가지며 대기목록의 가장 앞에 있으면 0, 두 번째에 있으면 1로 표현합니다.
   *
   * [입출력 예]
-  * priorities	location	return
-  * [2, 1, 3, 2]	2	1
-  * [1, 1, 9, 1, 1, 1]	0	5
+  * priorities	        location	return
+  * [2, 1, 3, 2]	         2	       1
+  * [1, 1, 9, 1, 1, 1]	   0	       5
+  *
+  * [3,3,4,2]              3         4
   *
   * [입출력 예 설명]
   * 예제 #2
   * 6개의 문서(A, B, C, D, E, F)가 인쇄 대기목록에 있고 중요도가 1 1 9 1 1 1 이므로 C D E F A B 순으로 인쇄합니다.
   */
 object Solution_02 {
-  def solution(priorities: Vector[Int], location: Int): Int = {
+  def main(args: Array[String]): Unit = {
+    val input = scala.io.StdIn.readLine()
+    val inputPriorities = input.substring(1, input.length() - 1)
+    val prioritiesString = inputPriorities.split(",")
+
+    val priorities = new ArrayBuffer[Int]()
+    prioritiesString.foreach( x => priorities += x.toInt)
+
+    val location = scala.io.StdIn.readLine()
+
+    solution2(priorities.toVector, location.toInt)
+
+  }
+
+  def solution2(priorities: Vector[Int], location: Int): Int = {
+
+    var returnNum = 1
+
+    if(priorities.head == priorities.max) {
+      if(location == 0) return returnNum
+      else {
+
+      }
+    } else {
+
+    }
+
     return 0
+  }
+
+  def solution(priorities: Vector[Int], location: Int): Int = {
+
+    val queue = new scala.collection.mutable.Queue[(Int, Int)]
+    var tempQueue = new scala.collection.mutable.Queue[(Int, Int)]
+
+    priorities.toList.zipWithIndex.foreach(x => queue += x)
+
+    def logic(queue: mutable.Queue[(Int, Int)]): mutable.Queue[(Int, Int)] = {
+
+      var sort = new scala.collection.mutable.Queue[(Int, Int)]
+      val head = queue.head
+      val max = priorities.max
+
+      if(head._1 < max) {
+        queue.dequeueAll( x => x != head).foreach(y => sort += y)
+        sort += head
+
+        return logic(sort)
+      }
+      return queue
+    }
+    tempQueue = logic(queue)
+    println("tempQueue: "+ tempQueue)
+
+    var num = 0
+    import  scala.util.control.Breaks._
+    breakable {
+      for( i <- tempQueue) {
+        println(i)
+        if (i._2 != location) {
+          num += 1
+        } else if (i._2 == location) {
+          break
+        }
+      }
+    }
+
+
+    println("num: "+(num+1))
+    return num+1
   }
 }
