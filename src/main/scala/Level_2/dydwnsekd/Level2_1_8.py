@@ -50,7 +50,7 @@ def solution(numbers):
     num_list = list(set(num_list))
     
     for i in num_list:
-        if i > 2:
+        if i > 1:
             flag = True
             for j in range(2, i):
                 if i % j == 0:
