@@ -14,20 +14,44 @@
 # numbers	return
 # [6, 10, 2]	6210
 # [3, 30, 34, 5, 9]	9534330
-from operator import itemgetter
+
+# 1
+# from operator import itemgetter
+
+# def solution(numbers):
+#     answer = ''
+#     temp_numbers = []
+    
+#     for i in numbers:
+#         temp_numbers.append(str(i))
+        
+#     sort_numbers = sorted(temp_numbers, key=lambda x : (x[0:len(x)],x), reverse=True)
+
+#     print (sort_numbers)
+    
+#     for i in sort_numbers:
+#         answer += i
+    
+#     return answer
+
+# 2
+from itertools import permutations
 
 def solution(numbers):
     answer = ''
-    temp_numbers = []
+    temp_list = []
+    num_list = []
     
+    str_numbers = []
     for i in numbers:
-        temp_numbers.append(str(i))
+        str_numbers.append(str(i))
+    
+    temp_list = list(permutations(str_numbers, len(numbers)))
+    
+    for i in temp_list:
+        num_list.append(int("".join(i)))
         
-    sort_numbers = sorted(temp_numbers, key=lambda x : (x[0:len(x)],x), reverse=True)
-
-    print (sort_numbers)
+    num_list.sort()
+        
+    return str(num_list[-1])
     
-    for i in sort_numbers:
-        answer += i
-    
-    return answer
