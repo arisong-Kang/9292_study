@@ -15,7 +15,9 @@
 # [6, 10, 2]	6210
 # [3, 30, 34, 5, 9]	9534330
 
-# 1
+# 1 틀림
+# ljust, rjust 이용 방식 확인
+# https://ngee.tistory.com/397
 # from operator import itemgetter
 
 # def solution(numbers):
@@ -34,7 +36,7 @@
     
 #     return answer
 
-# 2
+# 2 시간초과
 from itertools import permutations
 
 def solution(numbers):
