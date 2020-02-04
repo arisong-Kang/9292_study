@@ -16,8 +16,6 @@
 # [3, 30, 34, 5, 9]	9534330
 
 # 1 틀림
-# ljust, rjust 이용 방식 확인
-# https://ngee.tistory.com/397
 # from operator import itemgetter
 
 # def solution(numbers):
@@ -37,7 +35,29 @@
 #     return answer
 
 # 2 시간초과
-from itertools import permutations
+# from itertools import permutations
+
+# def solution(numbers):
+#     answer = ''
+#     temp_list = []
+#     num_list = []
+    
+#     str_numbers = []
+#     for i in numbers:
+#         str_numbers.append(str(i))
+    
+#     temp_list = list(permutations(str_numbers, len(numbers)))
+    
+#     for i in temp_list:
+#         num_list.append(int("".join(i)))
+        
+#     num_list.sort()
+        
+#     return str(num_list[-1])
+
+# 3 또 틀림
+# ljust, rjust 이용 방식 확인
+# https://ngee.tistory.com/397
 
 def solution(numbers):
     answer = ''
@@ -46,14 +66,12 @@ def solution(numbers):
     
     str_numbers = []
     for i in numbers:
-        str_numbers.append(str(i))
+        str_numbers.append(str(i).ljust(7, 'a'))
     
-    temp_list = list(permutations(str_numbers, len(numbers)))
-    
-    for i in temp_list:
-        num_list.append(int("".join(i)))
+    str_numbers.sort()
+    str_numbers.reverse()
+    answer = "".join(str_numbers)
+    answer = answer.replace("a", "")
+    print (answer)
         
-    num_list.sort()
-        
-    return str(num_list[-1])
-    
+    return answer
