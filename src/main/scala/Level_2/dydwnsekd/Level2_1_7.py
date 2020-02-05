@@ -59,19 +59,37 @@
 # ljust, rjust 이용 방식 확인
 # https://ngee.tistory.com/397
 
+# def solution(numbers):
+#     answer = ''
+#     temp_list = []
+#     num_list = []
+    
+#     str_numbers = []
+#     for i in numbers:
+#         str_numbers.append(str(i).ljust(7, 'a'))
+    
+#     str_numbers.sort()
+#     str_numbers.reverse()
+#     answer = "".join(str_numbers)
+#     answer = answer.replace("a", "")
+#     print (answer)
+        
+#     return answer
+
+# 4
+# https://dailyheumsi.tistory.com/102
+
 def solution(numbers):
     answer = ''
-    temp_list = []
-    num_list = []
-    
     str_numbers = []
+
+    # numbers = list(map(str, numbers))
     for i in numbers:
-        str_numbers.append(str(i).ljust(7, 'a'))
+        str_numbers.append((str(i) * 4)[:4])
     
-    str_numbers.sort()
-    str_numbers.reverse()
-    answer = "".join(str_numbers)
-    answer = answer.replace("a", "")
-    print (answer)
+    print (str_numbers)
+
+    sort_numbers = sorted(str_numbers, key=lambda x : (x[0:len(x)],x), reverse=True)
+    answer = sort_numbers[0]
         
     return answer
