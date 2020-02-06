@@ -85,11 +85,12 @@ def solution(numbers):
 
     # numbers = list(map(str, numbers))
     for i in numbers:
-        str_numbers.append((str(i) * 4)[:4])
-    
-    print (str_numbers)
+        str_numbers.append(str(i))
 
-    sort_numbers = sorted(str_numbers, key=lambda x : (x[0:len(x)],x), reverse=True)
-    answer = sort_numbers[0]
+    sort_numbers = sorted(str_numbers, key=lambda x : (x*4)[:5], reverse=True)
+    
+    for i in sort_numbers:
+        answer += i
         
-    return answer
+    # testcase 11번
+    return str(int(answer))
