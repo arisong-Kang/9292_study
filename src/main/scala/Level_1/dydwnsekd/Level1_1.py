@@ -21,4 +21,3 @@ def solution(answers):
             return_list.append(i+1)
 
     return return_list
-    
