@@ -81,16 +81,15 @@
 
 def solution(numbers):
     answer = ''
-    str_numbers = []
+
+    if max(numbers) == 0:
+        return "0"
 
     # numbers = list(map(str, numbers))
-    for i in numbers:
-        str_numbers.append(str(i))
-
-    sort_numbers = sorted(str_numbers, key=lambda x : (x*4)[:5], reverse=True)
+    numbers = sorted(numbers, key=lambda x : (str(x)*4)[:4], reverse=True)
     
-    for i in sort_numbers:
-        answer += i
+    for i in numbers:
+        answer += str(i)
         
-    # testcase 11번
-    return str(int(answer))
+    # testcase 11번 [0,0,0,0]
+    return answer
