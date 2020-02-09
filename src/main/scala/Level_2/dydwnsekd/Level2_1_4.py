@@ -31,19 +31,23 @@
 def solution(bridge_length, weight, truck_weights):
     answer = 0
     bridge_weight = 0
+    pop_flag =False
     
     # 다리 위에 있는 트럭
     bridge_truck = []
     
     while truck_weights or bridge_truck:
         # 다리 위에 있는 트럭이 1초에 한번씩 이동하는 것
+        pop_num = False
         for i in range(len(bridge_truck)):
             bridge_truck[i][1] += 1
             if bridge_truck[i][1] > bridge_length:
-                bridge_truck.pop[i]
+                pop_flag = True
+        if pop_flag:
+            bridge_truck.pop(0)
         
         # 다리 무게와 비교하여 새로운 트럭이 올라갈 수 있는지 확인
-        if bridge_weight + truck_weights[0] <= weight:
+        if truck_weights and bridge_weight + truck_weights[0] <= weight:
             bridge_truck.append([truck_weights.pop(0), 0])
         
         answer += 1
