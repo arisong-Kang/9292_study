@@ -24,5 +24,64 @@ progresses	speeds	return
 따라서 7일째에 2개의 기능, 9일째에 1개의 기능이 배포됩니다.
   */
 object DevelopFunc_3 {
+  def main(args:Array[String]):Unit = {
+    val progresses = Vector(93,30,55)
+    val speeds = Vector(1,30,5)
 
+    println(solution(progresses, speeds))
+  }
+
+  def solution(progresses: Vector[Int], speeds: Vector[Int]): Vector[Int] = {
+    var result = scala.collection.mutable.ListBuffer[Int]()
+    var progressesWithSpeeds = scala.collection.mutable.Queue[(Int, Int)]()
+    var cnt = 0
+
+    progresses.foreach(progress => {
+      progressesWithSpeeds += ((progress, speeds(cnt)))
+      cnt += 1
+    })
+
+    // 이런 표현식도 가능
+    // println(progresses.zip(speeds))
+
+    // 과제 완료될때까지 반복
+    while(progressesWithSpeeds.length > 0) {
+      // 하루 지날때마다 (진행률 + 속도)
+      progressesWithSpeeds = progressesWithSpeeds.map{case(progress, speed) => (progress + speed, speed) }
+
+      // 가장 앞에 있는 기능 개발률이 100 이상인 경우
+      if(progressesWithSpeeds.head._1 >= 100) {
+        // 완료되는 과제 수
+        cnt = 0
+
+        // 기능 개발률 훑기
+        for(idx <- 0 until progressesWithSpeeds.length) {
+          if(progressesWithSpeeds(0)._1 >= 100) {
+            progressesWithSpeeds.dequeue()
+            cnt += 1
+          }
+        }
+
+        result += cnt
+      }
+    }
+
+    return result.toVector
+  }
+
+  def removeDup(target: List[Int]): List[Int] = {
+    target match {
+      case head :: tail =>
+        val (dup, remain) = tail.span(_ == head)
+        dup.size + 1 :: removeDup(remain)
+      case _            => Nil
+    }
+  }
+
+  // 아주 깔끔한 방법
+  def solution2(progresses: Vector[Int], speeds: Vector[Int]): Vector[Int] = {
+    removeDup(progresses.zip(speeds)
+      .map(a => math.ceil((100 - a._1).toDouble / a._2).toInt)
+      .scan(0)((a, b) => if (a > b) a else b).tail.toList).toVector
+  }
 }
