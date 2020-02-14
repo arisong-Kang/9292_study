@@ -40,34 +40,29 @@ object Printer_2 {
     val priorities = Vector(2,1,3,2)
     val location = 2
 
-    solution(priorities, location)
+    println(solution(priorities, location))
   }
 
   def solution(priorities: Vector[Int], location: Int): Int = {
-    var maxPriority = priorities.max
-    var docList = scala.collection.mutable.Queue[(Int,Int)]()
-    var cnt = 1
+    var maxPriority:Int = priorities.max
+    var printList = scala.collection.mutable.Queue[Int]()
+    var curLocation = location + 1
 
-    for(idx <- 1 to priorities.length) {
-      docList.+= ((idx, priorities(idx-1)))
-    }
+    priorities.foreach(print => printList += print)
 
-    println(docList)
+    while(curLocation != 0) {
+      if(maxPriority > printList(0)) {
+        var tmp = printList.head
+        printList.dequeue()
+        printList += tmp
 
-    for(idx <- 0 until docList.length) {
-      if(maxPriority > docList(idx)._2) {
-        val tmp = docList(idx)
-        println(tmp)
-
-        docList.dequeue()
-        docList += tmp
+        curLocation -= 1
+      } else if (printList(0) == maxPriority) {
+        printList.dequeue()
+        curLocation -= 1
       }
-
     }
 
-
-    println(docList)
-
-    return 0
+    return if(curLocation > 0) curLocation else (curLocation + priorities.length )
   }
 }
