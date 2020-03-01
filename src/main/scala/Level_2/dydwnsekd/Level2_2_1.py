@@ -14,15 +14,32 @@
 # 1231234	3	3234
 # 4177252841	4	775841
 
-from operator import itemgetter
+from itertools import permutations
 
-def solution(numbers):
+def solution(numbers, k):
     answer = ''
-    sort_numbers = sorted(a, key=itemgetter(0), reverse=true)
 
-    for i in sort_numbers:
-        answer += sort_numbers
+    temp_numbers = list(map(int, numbers))
+    temp_numbers = list(permutations(temp_numbers, len(numbers)-k))
+
+    temp_numbers.sort()
+
+    return str(temp_numbers[-1])
+
+# def solution(numbers):
+#     answer = ''
+#     temp_list = []
+#     num_list = []
     
-    answer = int(answer)
+#     str_numbers = []
+#     for i in numbers:
+#         str_numbers.append(str(i))
     
-    return answer
+#     temp_list = list(permutations(str_numbers, len(numbers)))
+    
+#     for i in temp_list:
+#         num_list.append(int("".join(i)))
+        
+#     num_list.sort()
+        
+#     return str(num_list[-1])
