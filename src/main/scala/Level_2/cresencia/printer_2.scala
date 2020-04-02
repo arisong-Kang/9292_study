@@ -34,40 +34,35 @@ priorities	location	return
 6개의 문서(A, B, C, D, E, F)가 인쇄 대기목록에 있고 중요도가 1 1 9 1 1 1 이므로 C D E F A B 순으로 인쇄합니다.
 
   */
-object printer_2 {
+object Printer_2 {
 
   def main(args:Array[String]):Unit = {
     val priorities = Vector(2,1,3,2)
     val location = 2
 
-    solution(priorities, location)
+    println(solution(priorities, location))
   }
 
   def solution(priorities: Vector[Int], location: Int): Int = {
-    var maxPriority = priorities.max
-    var docList = scala.collection.mutable.Queue[(Int,Int)]()
-    var cnt = 1
+    var maxPriority:Int = priorities.max
+    var printList = scala.collection.mutable.Queue[Int]()
+    var curLocation = location + 1
 
-    for(idx <- 1 to priorities.length) {
-      docList.+= ((idx, priorities(idx-1)))
-    }
+    priorities.foreach(print => printList += print)
 
-    println(docList)
+    while(curLocation != 0) {
+      if(maxPriority > printList(0)) {
+        var tmp = printList.head
+        printList.dequeue()
+        printList += tmp
 
-    for(idx <- 0 until docList.length) {
-      if(maxPriority > docList(idx)._2) {
-        val tmp = docList(idx)
-        println(tmp)
-
-        docList.dequeue()
-        docList += tmp
+        curLocation -= 1
+      } else if (printList(0) == maxPriority) {
+        printList.dequeue()
+        curLocation -= 1
       }
-
     }
 
-
-    println(docList)
-
-    return 0
+    return if(curLocation > 0) curLocation else (curLocation + priorities.length )
   }
 }

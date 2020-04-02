@@ -44,7 +44,7 @@ package Level_2.cresencia
   *
  *
  */
-object top_5 {
+object Top_5 {
   def main(args:Array[String]):Unit = {
     val height = Vector(6,9,5,7,4)
     println(solution(height))
