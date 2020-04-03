@@ -19,7 +19,6 @@ object test_3 {
 
     //소수 리스트(에라토스테네스의 체) 만들기
     import scala.collection.mutable
-    var primeList = mutable.ArrayBuffer[Int]()
 
     //n의 약수 리스트
     var factorList = mutable.ArrayBuffer[Long]()
@@ -29,14 +28,9 @@ object test_3 {
       }
     }
 
-    println(factorList)
-    println(factorList.length)
-
     if (factorList.length == 2) {
-      println(factorList.toVector)
       return factorList.toVector
     } else {
-      println(Vector(-1,-1))
       return Vector(-1,-1)
     }
   }
