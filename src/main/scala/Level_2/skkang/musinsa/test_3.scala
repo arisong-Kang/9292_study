@@ -17,7 +17,6 @@ object test_3 {
 
   def solution(n: Long): Vector[Long] = {
 
-    //소수 리스트(에라토스테네스의 체) 만들기
     import scala.collection.mutable
 
     //n의 약수 리스트
