@@ -9,6 +9,10 @@ public class test_2 {
 
     public static void main(String[] args) {
 
+        int N = 10;
+        int K = 3;
+        int W = 10;
+
 //        int N = 10;
 //        int K = 3;
 //        int W = 10;
@@ -21,9 +25,9 @@ public class test_2 {
 //        int K = 1;
 //        int W = 10;
 
-        int N = 21;
-        int K = 17;
-        int W = 10;
+//        int N = 21;
+//        int K = 17;
+//        int W = 10;
 
         solution(N, K, W);
 
@@ -50,8 +54,8 @@ public class test_2 {
 
             if(stopArray.size() > 0) {
                 // 뽑은 카드의 경우의 수 중 이겼을 때 수
-                win(stopArray, N);
-                System.out.println("WIN count: " + win(stopArray, N));
+                win(stopArray, N, K);
+                System.out.println("WIN count: " + win(stopArray, N, K));
 
                 for( ArrayList<Integer> tmp : stopArray ){
                     for( int n : tmp ) {
@@ -63,9 +67,9 @@ public class test_2 {
             }
 
             System.out.println();
-            System.out.println("percent: " + (double)win(stopArray, N)/(double)totalCount);
+            System.out.println("percent: " + (double)win(stopArray, N, K)/(double)totalCount);
 
-            Double percent = (double)win(stopArray, N)/(double)totalCount;
+            Double percent = (double)win(stopArray, N, K)/(double)totalCount;
             if( 0 < percent ) {
                 percentList.add(percent);
             }
@@ -78,20 +82,29 @@ public class test_2 {
         }
 
 
-        if (percentList.size() > 0) {
+//        if (percentList.size() > 0) {
+//
+//            double result = percentList.get(0);
+//            for (int j = 1 ; j < percentList.size() ; j++) {
+//                System.out.println(percentList.get(j));
+//                result = result + percentList.get(j);
+//            }
+//            System.out.println("result: " + Math.round(result*100)/100.0);
+//        }
 
-            double result = percentList.get(0);
-            for (int j = 1 ; j < percentList.size() ; j++) {
-                System.out.println(percentList.get(j));
-                result = result + percentList.get(j);
+        double result = 0;
+        if(percentList.size() > 0) {
+            for (double per: percentList) {
+                result += per;
             }
-            System.out.println("result: " + Math.round(result*100)/100.0);
         }
 
+        System.out.println();
+        System.out.println("result: " + Math.round(result*10000)/10000.0);
         return 0;
     }
 
-    static int win(ArrayList<ArrayList<Integer>> stopArray, int N) {
+    static int win(ArrayList<ArrayList<Integer>> stopArray, int N, int K) {
         int winCount = 0;
         for( ArrayList<Integer> tmp : stopArray ){
             int sum = 0;
@@ -101,7 +114,7 @@ public class test_2 {
                 sum += n;
             }
 
-            if ( N >= sum ) {
+            if ( N >= sum && tmp.get(0)<K ) {
                 winCount++;
             }
 //            System.out.println("sum = " + sum);
@@ -126,8 +139,10 @@ public class test_2 {
                 }
 
                 if ( K <= sum ) {
+//                    System.out.print(">> sum: " + sum);
                     stopArray.add(tmp);
                 }
+//                System.out.println();
             }
 
         } else if(target == W + 1 ){
