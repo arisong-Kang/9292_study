@@ -9,10 +9,6 @@ public class test_2 {
 
     public static void main(String[] args) {
 
-        int N = 10;
-        int K = 3;
-        int W = 10;
-
 //        int N = 10;
 //        int K = 3;
 //        int W = 10;
@@ -25,15 +21,17 @@ public class test_2 {
 //        int K = 1;
 //        int W = 10;
 
-//        int N = 21;
-//        int K = 17;
-//        int W = 10;
+        int N = 21;
+        int K = 17;
+        int W = 10;
 
         solution(N, K, W);
 
     }
 
     public static ArrayList<ArrayList<Integer>> stopArray = new ArrayList<>();
+    public static ArrayList<Integer> stopCountList = new ArrayList<>();
+    public static ArrayList<Integer> winCountList = new ArrayList<>();
 
     public static double solution(int N, int K, int W) {
 
@@ -51,11 +49,13 @@ public class test_2 {
             // 카드를 뽑은 경우의 수(K<=합 일때 STOP)
             comb(new int[i], 0, W, i, 0, K);
             System.out.println("stopArray.size(): " + stopArray.size());
+            stopCountList.add(stopArray.size());
 
             if(stopArray.size() > 0) {
                 // 뽑은 카드의 경우의 수 중 이겼을 때 수
-                win(stopArray, N, K);
-                System.out.println("WIN count: " + win(stopArray, N, K));
+                int win = win(stopArray, N, K);
+                System.out.println("WIN count: " + win);
+                winCountList.add(win);
 
                 for( ArrayList<Integer> tmp : stopArray ){
                     for( int n : tmp ) {
@@ -67,37 +67,33 @@ public class test_2 {
             }
 
             System.out.println();
-            System.out.println("percent: " + (double)win(stopArray, N, K)/(double)totalCount);
-
-            Double percent = (double)win(stopArray, N, K)/(double)totalCount;
-            if( 0 < percent ) {
-                percentList.add(percent);
-            }
 
             if (totalCount == stopArray.size()) {
                 break;
             }
 
+
             stopArray.clear();
         }
 
 
-//        if (percentList.size() > 0) {
-//
-//            double result = percentList.get(0);
-//            for (int j = 1 ; j < percentList.size() ; j++) {
-//                System.out.println(percentList.get(j));
-//                result = result + percentList.get(j);
-//            }
-//            System.out.println("result: " + Math.round(result*100)/100.0);
-//        }
+        int winTotal = 0;
+        int stopTotal = 0;
 
-        double result = 0;
-        if(percentList.size() > 0) {
-            for (double per: percentList) {
-                result += per;
-            }
+        System.out.println("=== winCountList ===");
+        for (int w : winCountList) {
+            System.out.print(w + ", ");
+            winTotal = winTotal + w;
         }
+
+        System.out.println();
+        System.out.println("=== stopCountList ===");
+        for (int s : stopCountList) {
+            System.out.print(s + ", ");
+            stopTotal = stopTotal + s;
+        }
+
+        double result = (double)winTotal/(double)stopTotal;
 
         System.out.println();
         System.out.println("result: " + Math.round(result*10000)/10000.0);
@@ -114,7 +110,7 @@ public class test_2 {
                 sum += n;
             }
 
-            if ( N >= sum && tmp.get(0)<K ) {
+            if ( N >= sum ) {
                 winCount++;
             }
 //            System.out.println("sum = " + sum);
@@ -129,16 +125,19 @@ public class test_2 {
         ArrayList<Integer> tmp = new ArrayList<>();
 
         int sum = 0;
+        int stopSum = 0;
 
-        if ( r == 0) {
-            if (arr[0] >=1 ) {
+        if ( r == 0 ) {
+            if (arr[0] >=1) {
                 for(int i = 0 ; i < arr.length ; i++) {
 //                    System.out.print(arr[i] + " ");
                     tmp.add(arr[i]);
                     sum += arr[i];
                 }
 
-                if ( K <= sum ) {
+                stopSum = sum - arr[arr.length-1];
+
+                if ( K <= sum && stopSum < K) {
 //                    System.out.print(">> sum: " + sum);
                     stopArray.add(tmp);
                 }
